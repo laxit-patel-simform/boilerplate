@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('warehouse_stocks', function (Blueprint $table) {
+        Schema::create('diistributor_stocks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('warehouse_id');
+            $table->foreignId('distributor_id');
             $table->foreignId('product_id');
             $table->float('stock');
-            $table->timestamps(); 
+            $table->timestamps();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('warehouse_stocks');
+        Schema::dropIfExists('diistributor_stocks');
     }
 };
