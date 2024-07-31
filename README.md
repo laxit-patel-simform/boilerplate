@@ -1,0 +1,22 @@
+# Boilerplate
+
+- Location
+   - Migration
+   - Seeders
+   - SQL dumpp
+- RBAC
+   - Spatie Permission
+   - Permission Manager Command
+   - Permission & Role Seeder
+      - Default 'super-admin' role with all permissions
+- User Management
+   - Admin with role is seeded
+- Commands
+   - app:setup  
+   - app:refresh  
+   - app:permission:add  
+   - app:permission:list:file  
+   - app:permission:remove  
+   - app:permission:compare  
+   - app:permission:sync  
+   - app:permission:list:db 
