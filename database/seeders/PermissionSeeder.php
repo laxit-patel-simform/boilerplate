@@ -12,8 +12,8 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (include 'data/permissions.php' as $permission) {
-            Permission::create(['name' => $permission]);
+        foreach (json_decode(file_get_contents(storage_path('app/data/permissions.json')), true) as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
         }
     }
 }
