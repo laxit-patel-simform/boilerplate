@@ -6,7 +6,7 @@
 - **SQL Dump**: SQL dump files for database structure and initial data.
 
 ## RBAC (Role-Based Access Control)
-- **Spatie Permission**: Integrated for managing roles and permissions.
+- **Spatie Permission**: Integrated for efficiently managing roles and permissions.
 - **Permission Manager Command**: Custom Artisan command for managing permissions.
 - **Permission & Role Seeder**: Seeders to create default roles and permissions.
   - **Default 'super-admin' role**: Seeded with all permissions.
