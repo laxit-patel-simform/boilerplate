@@ -21,7 +21,7 @@ class PermissionManager extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->filePath = storage_path('app/data/permissions.json');
+        $this->filePath = database_path('seeders/data/permissions.json');
     }
 
     public function handle()

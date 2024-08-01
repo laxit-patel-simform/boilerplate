@@ -12,7 +12,7 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (json_decode(file_get_contents(storage_path('app/data/permissions.json')), true) as $permission) {
+        foreach (json_decode(file_get_contents(database_path('seeders/data/permissions.json')), true) as $permission) {
             Permission::firstOrCreate(['name' => $permission]);
         }
     }

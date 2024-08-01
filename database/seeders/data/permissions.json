@@ -1,0 +1,14 @@
+[
+    "admin:user:list",
+    "admin:user:edit",
+    "admin:user:create",
+    "admin:user:delete",
+    "admin:role:list",
+    "admin:role:edit",
+    "admin:role:create",
+    "admin:role:delete",
+    "admin:permission:list",
+    "admin:permission:edit",
+    "admin:permission:create",
+    "admin:permission:delete"
+]
