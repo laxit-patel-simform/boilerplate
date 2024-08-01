@@ -10,7 +10,7 @@ class DistributorOrder extends Model
 {
     use HasFactory, SoftDeletes;
 
-    private $fillable = ['distributor_id', 'status', 'tag', 'date', 'shipping_date', 'delivered_date', 'shipping_address', 'billing_address'];
+    protected $fillable = ['distributor_id', 'status', 'tag', 'date', 'shipping_date', 'delivered_date', 'shipping_address', 'billing_address'];
 
     public function distributor()
     {

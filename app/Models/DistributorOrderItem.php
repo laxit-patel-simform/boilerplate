@@ -9,7 +9,7 @@ class DistributorOrderItem extends Model
 {
     use HasFactory;
 
-    private $fillable = ['distributor_order_id', 'product_id', 'quantity'];
+    protected $fillable = ['distributor_order_id', 'product_id', 'quantity'];
 
     public function distributorOrder()
     {

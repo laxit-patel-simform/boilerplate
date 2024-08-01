@@ -10,7 +10,7 @@ class RetailerOrder extends Model
 {
     use HasFactory, SoftDeletes;
 
-    private $fillable = ['retailer_id', 'status', 'tag', 'date', 'shipping_date', 'delivered_date', 'shipping_address', 'billing_address'];
+    protected $fillable = ['retailer_id', 'status', 'tag', 'date', 'shipping_date', 'delivered_date', 'shipping_address', 'billing_address'];
 
     public function retailer()
     {
