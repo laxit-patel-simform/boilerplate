@@ -58,3 +58,7 @@ php artisan app:permission:compare
 php artisan app:permission:sync
 ```
 - Synchronizes permissions between the database and the JSON file, ensuring both are consistent.
+
+## Future Goals
+
+- [ ] provide selection for which seeder to consider
