@@ -62,3 +62,4 @@ php artisan app:permission:sync
 ## Future Goals
 
 - [ ] provide selection for which seeder to consider
+- [ ] create a command that can generate $fillable array from the migrations
