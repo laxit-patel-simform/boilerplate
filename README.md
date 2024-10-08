@@ -63,3 +63,4 @@ php artisan app:permission:sync
 
 - [ ] provide selection for which seeder to consider
 - [ ] create a command that can generate $fillable array from the migrations
+- [ ] add API platform
