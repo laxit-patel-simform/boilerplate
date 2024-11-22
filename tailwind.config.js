@@ -1,5 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import { mtConfig } from "@material-tailwind/react";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -8,6 +9,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.tsx',
+        "./node_modules/@material-tailwind/react/**/*.{js,ts,jsx,tsx}"
     ],
 
     theme: {
@@ -18,5 +20,5 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [forms, mtConfig],
 };

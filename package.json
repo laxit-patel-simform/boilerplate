@@ -22,5 +22,8 @@
         "tailwindcss": "^3.2.1",
         "typescript": "^5.0.2",
         "vite": "^5.0"
+    },
+    "dependencies": {
+        "@material-tailwind/react": "^2.1.10"
     }
 }
