@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
      */
     private function configureUrl(): void
     {
-        URL::forceScheme('https');
+        // URL::forceScheme('https');
     }
 
     /**
@@ -56,6 +56,7 @@ class AppServiceProvider extends ServiceProvider
      */
     private function configureVite(): void
     {
+        Vite::prefetch(concurrency: 3);
         Vite::usePrefetchStrategy('aggressive');
     }
 }
