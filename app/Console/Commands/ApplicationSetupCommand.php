@@ -2,35 +2,66 @@
 
 namespace App\Console\Commands;
 
+use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Command\Command as BaseCommand;
 
 class ApplicationSetupCommand extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'app:setup';
+    protected $signature = 'app:setup {--force : Skip confirmation prompts}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'This Command will setup the application';
 
-    /**
-     * Execute the console command.
-     */
-    public function handle()
+    public function handle(): int
     {
-        if ($this->confirm('This will Wipe Database, Continue ?')) {
-            $this->call('migrate:fresh');
-            $this->call('db:seed');
-            $this->call('optimize:clear');
-            $this->call('optimize');
-            $this->call('config:clear');
+        $this->newLine();
+        $this->info('🔧 <fg=green>Starting Application Setup...</>');
+        $this->newLine();
+
+        try {
+            DB::connection()->getPdo();
+            $this->components->twoColumnDetail('🗄️ Checking Database Connection', '<fg=green>Successful</>');
+        } catch (Exception $e) {
+            $this->components->warn("Database Does Not Exists! Aborting the process");
+            return BaseCommand::FAILURE;
         }
+
+        if ($this->option('force') || $this->confirm('⚠️ <fg=yellow>This will wipe the database. Continue?</>')) {
+            $this->setup();
+            return BaseCommand::SUCCESS;
+        } else {
+            $this->components->alert("Setup Aborted");
+            return BaseCommand::FAILURE;
+        }
+    }
+
+    protected function setup(): void
+    {
+        $this->newLine();
+        $this->components->twoColumnDetail('🔄 Migrating and Seeding Database...', '<fg=yellow>In Progress</>');
+        $this->call('migrate:fresh');
+        $this->call('db:seed');
+        $this->components->twoColumnDetail('🔄 Migrating and Seeding Database', '<fg=green>Done</>');
+
+        $this->newLine();
+        $this->components->twoColumnDetail('🧹 Clearing and Optimizing Cache...', '<fg=yellow>In Progress</>');
+        $this->call('optimize:clear');
+        $this->call('optimize');
+        $this->components->twoColumnDetail('🧹 Clearing and Optimizing Cache', '<fg=green>Done</>');
+
+        $this->newLine();
+        $this->components->twoColumnDetail('⚙️ Clearing Configuration Cache...', '<fg=yellow>In Progress</>');
+        $this->call('config:clear');
+        $this->components->twoColumnDetail('⚙️ Clearing Configuration Cache', '<fg=green>Done</>');
+
+        $this->newLine();
+        $this->components->success('✅ <fg=green>Application setup completed! BUILD SOMETHING MAJESTIC</>');
+        $this->newLine();
+    }
+
+    protected function checkDatabaseConnection(): ?string
+    {
+
     }
 }
